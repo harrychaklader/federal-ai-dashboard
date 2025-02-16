@@ -1,0 +1,64 @@
+{
+  "use_cases": [
+    {
+      "id": 1,
+      "name": "Document Processing Automation",
+      "agency": "Department of Veterans Affairs",
+      "domain": "Document Processing",
+      "description": "AI-powered system for processing veteran benefit claims and medical records, utilizing natural language processing to extract key information and accelerate processing times.",
+      "status": "active",
+      "start_date": "2024-01-01",
+      "impact": "Reduced processing time by 60%, improved accuracy by 35%, and increased veteran satisfaction rates by 45%"
+    },
+    {
+      "id": 2,
+      "name": "Predictive Maintenance System",
+      "agency": "Department of Defense",
+      "domain": "Maintenance",
+      "description": "AI system that predicts equipment failures and maintenance needs for military vehicles and aircraft, using sensor data and machine learning algorithms.",
+      "status": "active",
+      "start_date": "2023-06-15",
+      "impact": "30% reduction in equipment downtime, 25% cost savings in maintenance operations"
+    },
+    {
+      "id": 3,
+      "name": "Fraud Detection System",
+      "agency": "Department of Treasury",
+      "domain": "Cybersecurity",
+      "description": "Advanced AI system for detecting fraudulent transactions and suspicious financial patterns in real-time across federal payment systems.",
+      "status": "active",
+      "start_date": "2023-09-01",
+      "impact": "Prevented over $100M in fraudulent transactions, 40% improvement in detection accuracy"
+    },
+    {
+      "id": 4,
+      "name": "Natural Disaster Response",
+      "agency": "FEMA",
+      "domain": "Emergency Response",
+      "description": "AI-powered system for predicting natural disaster impacts and optimizing emergency response resource allocation.",
+      "status": "development",
+      "start_date": "2024-03-01",
+      "impact": "Expected to reduce response time by 50% and improve resource allocation efficiency by 35%"
+    },
+    {
+      "id": 5,
+      "name": "Smart Traffic Management",
+      "agency": "Department of Transportation",
+      "domain": "Transportation",
+      "description": "AI system for optimizing traffic flow in major urban areas using real-time data and predictive analytics.",
+      "status": "active",
+      "start_date": "2023-11-15",
+      "impact": "20% reduction in average commute times, 15% decrease in traffic-related emissions"
+    },
+    {
+      "id": 6,
+      "name": "Healthcare Diagnosis Assistant",
+      "agency": "Department of Health and Human Services",
+      "domain": "Healthcare",
+      "description": "AI-powered diagnostic tool to assist healthcare providers in identifying diseases and recommending treatment plans.",
+      "status": "testing",
+      "start_date": "2024-02-01",
+      "impact": "Preliminary results show 25% improvement in early disease detection"
+    }
+  ]
+}
