@@ -24,6 +24,7 @@ data_fetcher = DataFetcher()
 
 @app.route('/api/use-cases', methods=['GET'])
 def get_use_cases():
+    print('Received request for use-cases')
     # Get query parameters
     search_query = request.args.get('search', '')
     agency_filter = request.args.get('agency', '')
@@ -32,7 +33,10 @@ def get_use_cases():
     page = int(request.args.get('page', 1))
     per_page = int(request.args.get('per_page', 25))
     
+    print(f'Query parameters: search={search_query}, agency={agency_filter}, topic={topic_filter}, status={status_filter}, page={page}, per_page={per_page}')
+    
     try:
+        print('Fetching data from GitHub...')
         # Use the data fetcher to search and filter use cases
         filtered_cases = data_fetcher.search_use_cases(
             query=search_query,
@@ -40,6 +44,7 @@ def get_use_cases():
             topic=topic_filter,
             status=status_filter
         )
+        print(f'Found {len(filtered_cases)} matching cases')
         
         # Calculate pagination
         total_items = len(filtered_cases)
@@ -49,13 +54,15 @@ def get_use_cases():
         
         paginated_data = filtered_cases[start_idx:end_idx]
         
-        return jsonify({
+        response_data = {
             'items': paginated_data,
             'total_items': total_items,
             'total_pages': total_pages,
             'current_page': page,
             'per_page': per_page
-        })
+        }
+        print('Sending response:', response_data)
+        return jsonify(response_data)
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 

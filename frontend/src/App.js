@@ -88,13 +88,21 @@ function App() {
         status: selectedStatus
       });
 
-      console.log('Fetching with params:', params.toString());
+      console.log('Making request to:', `${config.apiBaseUrl}/use-cases?${params.toString()}`);
       const response = await axios.get(`${config.apiBaseUrl}/use-cases?${params.toString()}`);
-      console.log('Received data:', response.data);
+      console.log('Full response:', response);
+      console.log('Response data:', response.data);
+      console.log('Items:', response.data.items);
       
-      setUseCases(response.data.items);
-      setTotalItems(response.data.total_items);
-      setTotalPages(response.data.total_pages);
+      if (Array.isArray(response.data.items)) {
+        console.log('Setting use cases:', response.data.items.length, 'items');
+        setUseCases(response.data.items);
+        setTotalItems(response.data.total_items || 0);
+        setTotalPages(response.data.total_pages || 1);
+      } else {
+        console.error('Expected items array but got:', typeof response.data.items);
+        setError('Invalid data format received from server');
+      }
       setError(null);
     } catch (err) {
       setError('Error fetching use cases. Please try again later.');
