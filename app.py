@@ -76,4 +76,8 @@ def health_check():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    # Use environment variables for port, defaulting to 5001 for local development
+    port = int(os.environ.get('PORT', 5001))
+    # In production, host should be '0.0.0.0' to accept all incoming connections
+    host = '0.0.0.0' if os.environ.get('RENDER') else 'localhost'
+    app.run(host=host, port=port, debug=os.environ.get('FLASK_DEBUG', 'True').lower() == 'true')

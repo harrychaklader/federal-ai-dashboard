@@ -23,6 +23,7 @@ import {
   Alert,
 } from '@mui/material';
 import axios from 'axios';
+import config from './config';
 
 function App() {
   const [useCases, setUseCases] = useState([]);
@@ -53,7 +54,7 @@ function App() {
     const fetchMetadata = async () => {
       setMetadataLoading(true);
       try {
-        const metadataResponse = await axios.get('http://localhost:5001/api/metadata');
+        const metadataResponse = await axios.get(`${config.apiBaseUrl}/metadata`);
         setMetadata(metadataResponse.data);
         setError(null);
       } catch (err) {
@@ -88,7 +89,7 @@ function App() {
       });
 
       console.log('Fetching with params:', params.toString());
-      const response = await axios.get(`http://localhost:5001/api/use-cases?${params.toString()}`);
+      const response = await axios.get(`${config.apiBaseUrl}/use-cases?${params.toString()}`);
       console.log('Received data:', response.data);
       
       setUseCases(response.data.items);
