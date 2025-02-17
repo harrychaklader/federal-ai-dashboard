@@ -8,17 +8,19 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-# Enable CORS for all origins temporarily
 CORS(app, resources={
-    r"/*": {
-        "origins": "*",
-        "methods": ["GET", "POST", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
+    r"/api/*": {
+        "origins": [
+            "http://localhost:3000",
+            "https://federal-ai-dashboard.vercel.app"
+        ]
     }
 })
 
 # Initialize the data fetcher
 data_fetcher = DataFetcher()
+
+
 
 @app.route('/api/use-cases', methods=['GET'])
 def get_use_cases():
@@ -62,7 +64,6 @@ def get_use_cases():
         print('Sending response:', response_data)
         return jsonify(response_data)
     except Exception as e:
-        print('Error:', str(e))
         return jsonify({'error': str(e)}), 500
 
 @app.route('/api/metadata', methods=['GET'])
