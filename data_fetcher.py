@@ -47,7 +47,9 @@ class DataFetcher:
 
         if not self.g:
             print("No GitHub client available, using sample data")
-            return self._get_sample_data()
+            self.cache = self._get_sample_data()
+            self.last_fetch_time = datetime.now()
+            return self.cache
 
         try:
             print(f"Fetching data from GitHub repository: {self.repo_name}")
@@ -257,7 +259,6 @@ class DataFetcher:
                 print(''.join(traceback.format_tb(e.__traceback__)))
             return []
 
-        return filtered_data
 
     def get_metadata(self):
         """Get unique values for filtering"""
